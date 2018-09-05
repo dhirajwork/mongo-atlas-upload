@@ -1,6 +1,8 @@
 from pymongo import MongoClient
 from pprint import pprint
-client = MongoClient("mongodb+srv://dhirajwork:ibmdata@mycluster-n8wi9.mongodb.net/test?retryWrites=true")
+print("Enter your mongo string")
+address=raw_input()
+client = MongoClient(address)
 db=client['thedata']
 collect=db['collection']
 
@@ -17,7 +19,7 @@ with open("data.csv") as infile:
 	for line in infile:
 		word=line.split(',')
 		dict={}
-		for i in range(0,49):
+		for i in range(0,len(field)):
 			try:
 				dict[field[i]]=int(word[i].strip('\n'))
 			except:
